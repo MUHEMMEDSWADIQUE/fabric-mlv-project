@@ -1,0 +1,37 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {
+    "allowModernEvaluationEngine": true
+  },
+  "name": "Dataflow 2",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "countries csv": {
+      "queryId": "7c92ec8b-5aec-44fe-9e72-d78d82e3fc42",
+      "queryName": "countries csv"
+    },
+    "payment csv": {
+      "queryId": "444bda20-ba79-4f34-9fe9-0287545cbd2c",
+      "queryName": "payment csv"
+    },
+    "Merge": {
+      "queryId": "9cae46b9-9d51-4682-9138-cbeb8c60b59e",
+      "queryName": "Merge",
+      "loadEnabled": false
+    },
+    "Merge_DataDestination": {
+      "queryId": "b0af4c67-5004-4827-aa00-1bded6460834",
+      "queryName": "Merge_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"435106a7-4ab9-4512-9e95-9c625c14ae80\",\"DatasourceId\":\"16f63493-90a5-4a53-a4d4-2a789fc60023\"}"
+    }
+  ]
+}
