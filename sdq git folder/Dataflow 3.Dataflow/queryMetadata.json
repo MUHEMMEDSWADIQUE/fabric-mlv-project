@@ -1,0 +1,55 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {
+    "allowModernEvaluationEngine": true
+  },
+  "name": "Dataflow 3",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "Airlines": {
+      "queryId": "262a640d-9d23-4c17-92f0-44fdfcd8b3ce",
+      "queryName": "Airlines",
+      "loadEnabled": false
+    },
+    "Airports": {
+      "queryId": "4bad997d-d590-4994-8303-f576906e04fc",
+      "queryName": "Airports"
+    },
+    "GetNearestAirport": {
+      "queryId": "22950262-870d-4f48-b55c-72cace80172d",
+      "queryName": "GetNearestAirport",
+      "loadEnabled": false
+    },
+    "Me": {
+      "queryId": "1b01fac5-ed9c-4c1e-be3a-6aafaac83421",
+      "queryName": "Me"
+    },
+    "People": {
+      "queryId": "8c59f1f0-5b45-455e-855c-1852a8b18c03",
+      "queryName": "People"
+    },
+    "Photos": {
+      "queryId": "a197121a-404b-4302-ac51-0952a38068ae",
+      "queryName": "Photos"
+    },
+    "Airlines_DataDestination": {
+      "queryId": "0234bc0e-e7a6-4c2c-9b04-c751f086b223",
+      "queryName": "Airlines_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "https://services.odata.org/V4/TripPinServiceRW/",
+      "kind": "OData",
+      "connectionId": "{\"ClusterId\":\"435106a7-4ab9-4512-9e95-9c625c14ae80\",\"DatasourceId\":\"89fde18b-3d3e-4ec0-b736-d9ce9d1a2b53\"}"
+    },
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"435106a7-4ab9-4512-9e95-9c625c14ae80\",\"DatasourceId\":\"16f63493-90a5-4a53-a4d4-2a789fc60023\"}"
+    }
+  ]
+}

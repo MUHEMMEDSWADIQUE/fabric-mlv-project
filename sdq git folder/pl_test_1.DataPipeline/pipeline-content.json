@@ -1,0 +1,192 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "DelimitedTextSource",
+            "formatSettings": {
+              "type": "DelimitedTextReadSettings"
+            },
+            "storeSettings": {
+              "type": "AzureBlobStorageReadSettings",
+              "recursive": false,
+              "enablePartitionDiscovery": false
+            },
+            "datasetSettings": {
+              "type": "DelimitedText",
+              "typeProperties": {
+                "location": {
+                  "type": "LakehouseLocation",
+                  "folderPath": "test_files",
+                  "fileName": "countries.csv"
+                },
+                "columnDelimiter": ",",
+                "quoteChar": "\"",
+                "escapeChar": "\\",
+                "firstRowAsHeader": true
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "SDQ_sample_ls",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "32ffa899-c1d7-90a1-413f-6ff38dc76fcf",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Files"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "Upsert",
+            "applyVOrder": false,
+            "enableTimestampNtz": false,
+            "upsertSettings": {
+              "keys": {
+                "value": "@pipeline().parameters.par[0].key",
+                "type": "Expression"
+              }
+            },
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "schema": "test",
+                "table": "countries"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "SDQ_sample_ls",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "32ffa899-c1d7-90a1-413f-6ff38dc76fcf",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "mappings": [
+              {
+                "source": {
+                  "name": "order_id",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "order_id",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "customer_id",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "customer_id",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "order_date",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "order_date",
+                  "physicalType": "date"
+                }
+              },
+              {
+                "source": {
+                  "name": "product_id",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "product_id",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "quantity",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "quantity",
+                  "physicalType": "integer"
+                }
+              },
+              {
+                "source": {
+                  "name": "price",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "price",
+                  "physicalType": "float"
+                }
+              },
+              {
+                "source": {
+                  "name": "status",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "status",
+                  "physicalType": "string"
+                }
+              }
+            ],
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Copy data1",
+        "dependsOn": []
+      }
+    ],
+    "parameters": {
+      "par": {
+        "type": "array",
+        "defaultValue": [
+          {
+            "key": [
+              "order_id"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
