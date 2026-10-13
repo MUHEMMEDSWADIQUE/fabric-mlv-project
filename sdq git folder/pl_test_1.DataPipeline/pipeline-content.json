@@ -2,80 +2,92 @@
   "properties": {
     "activities": [
       {
+        "name": "Copy data1",
         "type": "Copy",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
         "typeProperties": {
           "source": {
             "type": "DelimitedTextSource",
-            "formatSettings": {
-              "type": "DelimitedTextReadSettings"
-            },
             "storeSettings": {
               "type": "AzureBlobStorageReadSettings",
               "recursive": false,
               "enablePartitionDiscovery": false
             },
+            "formatSettings": {
+              "type": "DelimitedTextReadSettings"
+            },
             "datasetSettings": {
+              "annotations": [],
+              "linkedService": {
+                "name": "SDQ_sample_ls",
+                "properties": {
+                  "annotations": [],
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "workspaceId": "66e95359-350d-4abd-9b10-110ec6cfd52b",
+                    "artifactId": "8dc76fcf-6ff3-413f-90a1-c1d732ffa899",
+                    "rootFolder": "Files"
+                  }
+                }
+              },
               "type": "DelimitedText",
               "typeProperties": {
                 "location": {
                   "type": "LakehouseLocation",
-                  "folderPath": "test_files",
-                  "fileName": "countries.csv"
+                  "fileName": "countries.csv",
+                  "folderPath": "test_files"
                 },
                 "columnDelimiter": ",",
-                "quoteChar": "\"",
                 "escapeChar": "\\",
-                "firstRowAsHeader": true
+                "firstRowAsHeader": true,
+                "quoteChar": "\""
               },
-              "schema": [],
-              "linkedService": {
-                "name": "SDQ_sample_ls",
-                "properties": {
-                  "type": "Lakehouse",
-                  "typeProperties": {
-                    "artifactId": "32ffa899-c1d7-90a1-413f-6ff38dc76fcf",
-                    "workspaceId": "00000000-0000-0000-0000-000000000000",
-                    "rootFolder": "Files"
-                  },
-                  "annotations": []
-                }
-              },
-              "annotations": []
+              "schema": []
             }
           },
           "sink": {
             "type": "LakehouseTableSink",
             "tableActionOption": "Upsert",
-            "applyVOrder": false,
-            "enableTimestampNtz": false,
             "upsertSettings": {
               "keys": {
                 "value": "@pipeline().parameters.par[0].key",
                 "type": "Expression"
               }
             },
+            "applyVOrder": false,
+            "enableTimestampNtz": false,
             "datasetSettings": {
-              "type": "LakehouseTable",
-              "typeProperties": {
-                "schema": "test",
-                "table": "countries"
-              },
-              "schema": [],
+              "annotations": [],
               "linkedService": {
                 "name": "SDQ_sample_ls",
                 "properties": {
+                  "annotations": [],
                   "type": "Lakehouse",
                   "typeProperties": {
-                    "artifactId": "32ffa899-c1d7-90a1-413f-6ff38dc76fcf",
-                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "workspaceId": "66e95359-350d-4abd-9b10-110ec6cfd52b",
+                    "artifactId": "8dc76fcf-6ff3-413f-90a1-c1d732ffa899",
                     "rootFolder": "Tables"
-                  },
-                  "annotations": []
+                  }
                 }
               },
-              "annotations": []
+              "type": "LakehouseTable",
+              "schema": [],
+              "typeProperties": {
+                "schema": "test",
+                "table": "countries"
+              }
             }
           },
+          "enableStaging": false,
           "translator": {
             "type": "TabularTranslator",
             "mappings": [
@@ -162,18 +174,8 @@
               "allowDataTruncation": true,
               "treatBooleanAsNumber": false
             }
-          },
-          "enableStaging": false
-        },
-        "policy": {
-          "timeout": "0.12:00:00",
-          "retry": 0,
-          "retryIntervalInSeconds": 30,
-          "secureInput": false,
-          "secureOutput": false
-        },
-        "name": "Copy data1",
-        "dependsOn": []
+          }
+        }
       }
     ],
     "parameters": {
