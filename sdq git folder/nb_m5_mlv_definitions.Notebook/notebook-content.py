@@ -407,6 +407,18 @@
 # META   "language_group": "synapse_pyspark"
 # META }
 
+# CELL ********************
+
+# MAGIC %%sql
+# MAGIC select * from retail.gold_customer_lifetime_value
+
+# METADATA ********************
+
+# META {
+# META   "language": "sparksql",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # MARKDOWN ********************
 
 # Object	Reads from	Notes
