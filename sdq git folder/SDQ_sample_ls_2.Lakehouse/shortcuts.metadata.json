@@ -1,0 +1,15 @@
+[
+  {
+    "name": "countries",
+    "path": "/Tables/dbo",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/test/countries",
+        "itemId": "32ffa899-c1d7-90a1-413f-6ff38dc76fcf",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "artifactType": "Lakehouse"
+      }
+    }
+  }
+]

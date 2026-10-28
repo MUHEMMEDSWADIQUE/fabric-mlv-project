@@ -1,0 +1,34 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {
+    "allowModernEvaluationEngine": true
+  },
+  "name": "Dataflow for business central",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "customers": {
+      "queryId": "24cc3ddb-1b49-4986-9d58-c2cc4d889952",
+      "queryName": "customers",
+      "loadEnabled": false
+    },
+    "customers_DataDestination": {
+      "queryId": "81f11cb9-c5dc-4655-bce6-9501ceb48310",
+      "queryName": "customers_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Dynamics365BusinessCentral",
+      "kind": "Dynamics365BusinessCentral",
+      "connectionId": "{\"ClusterId\":\"435106a7-4ab9-4512-9e95-9c625c14ae80\",\"DatasourceId\":\"04f1a7f3-33d8-4f1f-8330-4d9228f1b3ac\"}"
+    },
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"435106a7-4ab9-4512-9e95-9c625c14ae80\",\"DatasourceId\":\"16f63493-90a5-4a53-a4d4-2a789fc60023\"}"
+    }
+  ]
+}
