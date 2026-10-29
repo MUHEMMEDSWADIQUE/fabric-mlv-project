@@ -25,7 +25,10 @@
 import requests,time,json
 
 BASE = "https://api.github.com"
-TOKEN = ""#you have to provide one pat token here, if we give a pat token physically here , some issues coming while commiting so i removed the token from here
+
+TOKEN = notebookutils.variableLibrary.get(
+    "$(/**/etl_config_api_ingestion/GIT_PAT_TOKEN)"
+)
 
 headers = {
     "Accept": "application/vnd.github+json",
